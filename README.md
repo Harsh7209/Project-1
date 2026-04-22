@@ -364,10 +364,7 @@ The base banking application logic and Spring Boot codebase were adapted from an
 
 **Harsh Choubey**
 
-*DevOps & Cloud Engineer*
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](www.linkedin.com/in/harshchoubey113)
-[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Harsh7209)
 
 
 *Open to DevOps, Platform Engineering, and Cloud Infrastructure roles.*
