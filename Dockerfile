@@ -1,3 +1,5 @@
+# Multi stage docker file
+
 # Build stage
 FROM eclipse-temurin:21-jdk-alpine AS build
 WORKDIR /app
