@@ -284,194 +284,8 @@ sequenceDiagram
     Argo-->>Dev: Slack / Email notification
 ```
 
-### GitHub Actions — CI Workflow (`.github/workflows/ci.yml`)
 
-```yaml
-name: CI Pipeline
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-jobs:
-  build-and-push:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-
-      - name: Run Unit Tests
-        run: mvn test -f app/pom.xml
-
-      - name: Build Application JAR
-        run: mvn package -DskipTests -f app/pom.xml
-
-      - name: Build Docker Image
-        run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/ai-banking-app:${{ github.sha }} ./app
-
-      - name: Push to Docker Hub
-        run: |
-          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-          docker push ${{ secrets.DOCKER_USERNAME }}/ai-banking-app:${{ github.sha }}
-
-      - name: Update K8s Manifest Image Tag
-        run: |
-          sed -i "s|image: .*/ai-banking-app:.*|image: ${{ secrets.DOCKER_USERNAME }}/ai-banking-app:${{ github.sha }}|" \
-          k8s/deployment.yaml
-
-      - name: Commit Updated Manifest
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add k8s/deployment.yaml
-          git commit -m "ci: update image tag to ${{ github.sha }}"
-          git push
-```
-
-### Argo CD — GitOps Sync (`argocd/application.yaml`)
-
-```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: ai-banking-app
-  namespace: argocd
-spec:
-  project: default
-  source:
-    repoURL: https://github.com/yourusername/ai-banking-gitops
-    targetRevision: main
-    path: k8s
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: banking-app
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
-```
-
-> ✅ `selfHeal: true` ensures Argo CD automatically corrects any manual drift from the desired state — **Git is always the single source of truth.**
-
----
-
-## 🚀 Deployment Guide
-
-### Prerequisites
-
-| Tool | Version |
-|---|---|
-| AWS CLI | v2+ |
-| Terraform | v1.6+ |
-| kubectl | v1.28+ |
-| Helm | v3.12+ |
-| Docker | v24+ |
-
-### Step 1 — Clone the Repository
-
-```bash
-git clone https://github.com/yourusername/ai-banking-gitops.git
-cd ai-banking-gitops
-```
-
-### Step 2 — Provision AWS Infrastructure with Terraform
-
-```bash
-cd terraform
-
-# Initialize Terraform
-terraform init
-
-# Preview the execution plan
-terraform plan -var="region=us-east-1" -var="cluster_name=banking-eks"
-
-# Apply infrastructure
-terraform apply -auto-approve
-```
-
-This provisions:
-- ✅ VPC with public/private subnets across 2 AZs
-- ✅ EKS Cluster with managed node groups
-- ✅ IAM roles (IRSA) for service accounts
-- ✅ AWS Load Balancer Controller prerequisites
-
-### Step 3 — Configure kubectl
-
-```bash
-aws eks update-kubeconfig \
-  --name banking-eks \
-  --region us-east-1
-
-# Verify cluster access
-kubectl get nodes
-```
-
-### Step 4 — Install Argo CD on EKS
-
-```bash
-kubectl create namespace argocd
-
-kubectl apply -n argocd \
-  -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-
-# Expose Argo CD UI
-kubectl patch svc argocd-server -n argocd \
-  -p '{"spec": {"type": "LoadBalancer"}}'
-
-# Retrieve initial admin password
-kubectl get secret argocd-initial-admin-secret -n argocd \
-  -o jsonpath="{.data.password}" | base64 -d && echo
-```
-
-### Step 5 — Register the Application with Argo CD
-
-```bash
-kubectl apply -f argocd/application.yaml
-```
-
-Argo CD will immediately detect the `k8s/` manifests and sync the application to EKS. From this point forward, **every `git push` to `main` triggers an automatic deployment**.
-
-### Step 6 — Deploy Monitoring Stack
-
-```bash
-# Add Helm repos
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-helm repo update
-
-# Install kube-prometheus-stack (Prometheus + Grafana)
-helm install monitoring prometheus-community/kube-prometheus-stack \
-  --namespace monitoring \
-  --create-namespace \
-  --values monitoring/prometheus/values.yaml
-```
-
-### Step 7 — Access the Services
-
-```bash
-# Banking App
-kubectl get svc -n banking-app
-
-# Argo CD UI
-kubectl get svc argocd-server -n argocd
-
-# Grafana UI
-kubectl get svc -n monitoring
-# Default credentials: admin / prom-operator
-```
-
----
 
 ## 📊 Monitoring & Observability
 
@@ -505,40 +319,6 @@ The observability stack is built on the **kube-prometheus-stack**, providing ful
    └── Model response latency distribution
 ```
 
-### Sample Prometheus AlertRule
-
-```yaml
-groups:
-  - name: banking-app-alerts
-    rules:
-      - alert: HighErrorRate
-        expr: rate(http_server_requests_seconds_count{status=~"5.."}[5m]) > 0.05
-        for: 2m
-        labels:
-          severity: critical
-        annotations:
-          summary: "High HTTP error rate on banking app"
-          description: "Error rate exceeded 5% over the last 5 minutes."
-```
-
----
-
-## 🌍 Local Development
-
-Run the full stack locally using Docker Compose:
-
-```bash
-# Start all services
-docker-compose up -d
-
-# Services available at:
-# Banking App  → http://localhost:8080
-# Ollama AI    → http://localhost:11434
-# Prometheus   → http://localhost:9090
-# Grafana      → http://localhost:3000
-```
-
----
 
 ## 📚 Key Learnings
 
@@ -582,13 +362,13 @@ The base banking application logic and Spring Boot codebase were adapted from an
 
 <div align="center">
 
-**Your Name**
+**Harsh Choubey**
 
 *DevOps & Cloud Engineer*
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/yourprofile)
-[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/yourusername)
-[![Portfolio](https://img.shields.io/badge/Portfolio-Visit-FF5722?style=for-the-badge&logo=google-chrome&logoColor=white)](https://yourportfolio.dev)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](www.linkedin.com/in/harshchoubey113)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Harsh7209)
+
 
 *Open to DevOps, Platform Engineering, and Cloud Infrastructure roles.*
 
@@ -596,9 +376,7 @@ The base banking application logic and Spring Boot codebase were adapted from an
 
 ---
 
-## 📄 License
 
-This project is licensed under the [MIT License](LICENSE).
 
 ---
 
