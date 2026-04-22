@@ -1,3 +1,5 @@
+#Docker compose file
+
 services:
   mysql:
     image: mysql:8.0
@@ -44,7 +46,7 @@ services:
       ollama:
         condition: service_healthy
     entrypoint: /bin/sh
-    command: -c "ollama pull tinyllama"
+    command: -c "ollama pull tinyllama"  # pulling ollama model here
     networks:
       - bankapp-net
 
