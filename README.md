@@ -1,28 +1,20 @@
+# 🛒 E-Commerce Platform — GitOps on AWS EKS
+
 <div align="center">
 
-# 🏦 AI-Powered Banking App — GitOps on AWS EKS
+![GitHub Actions](https://img.shields.io/badge/CI-GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
+![Argo CD](https://img.shields.io/badge/CD-Argo_CD-EF7B4D?style=for-the-badge&logo=argo&logoColor=white)
+![AWS EKS](https://img.shields.io/badge/Cloud-AWS_EKS-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white)
+![Terraform](https://img.shields.io/badge/IaC-Terraform-7B42BC?style=for-the-badge&logo=terraform&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/Orchestration-Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)
+![Docker](https://img.shields.io/badge/Container-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Next.js](https://img.shields.io/badge/App-Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)
+![Prometheus](https://img.shields.io/badge/Monitoring-Prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=white)
+![Grafana](https://img.shields.io/badge/Observability-Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white)
 
-### Production-Grade DevOps | GitOps | Cloud-Native | CI/CD
+**A production-grade, cloud-native e-commerce platform — engineered end-to-end with modern DevOps, GitOps, and Infrastructure-as-Code practices on AWS.**
 
-[![CI Pipeline](https://img.shields.io/github/actions/workflow/status/yourusername/ai-banking-gitops/ci.yml?branch=main&label=CI%20Pipeline&logo=github-actions&logoColor=white&style=for-the-badge)](https://github.com/yourusername/ai-banking-gitops/actions)
-[![ArgoCD](https://img.shields.io/badge/GitOps-ArgoCD-EF7B4D?style=for-the-badge&logo=argo&logoColor=white)](https://argoproj.github.io/cd/)
-[![AWS EKS](https://img.shields.io/badge/Cloud-AWS%20EKS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)](https://aws.amazon.com/eks/)
-[![Terraform](https://img.shields.io/badge/IaC-Terraform-7B42BC?style=for-the-badge&logo=terraform&logoColor=white)](https://www.terraform.io/)
-[![Kubernetes](https://img.shields.io/badge/Orchestration-Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)](https://kubernetes.io/)
-[![Spring Boot](https://img.shields.io/badge/Backend-Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
-[![Docker](https://img.shields.io/badge/Container-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
-[![Prometheus](https://img.shields.io/badge/Monitoring-Prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=white)](https://prometheus.io/)
-[![Grafana](https://img.shields.io/badge/Dashboards-Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white)](https://grafana.com/)
-[![Ollama](https://img.shields.io/badge/AI-Ollama-000000?style=for-the-badge&logo=ollama&logoColor=white)](https://ollama.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-
-<br/>
-
-> **A fully automated, production-grade GitOps pipeline deploying an AI-powered banking application on AWS EKS — showcasing end-to-end DevOps engineering: Infrastructure as Code, containerization, CI/CD automation, GitOps delivery, and real-time observability.**
-
-<br/>
-
-[🚀 Architecture](#-system-architecture) · [⚙️ CI/CD Pipeline](#️-cicd-pipeline) · [🛠️ Tech Stack](#️-tech-stack) · [📁 Project Structure](#-project-structure) · [🚢 Deployment](#-deployment-guide) · [📊 Monitoring](#-monitoring--observability) · [📚 Learnings](#-key-learnings)
+[Architecture](#-architecture) · [Tech Stack](#-tech-stack) · [CI/CD Pipeline](#-cicd-pipeline) · [Deployment](#-deployment) · [Monitoring](#-monitoring) · [Learnings](#-key-learnings)
 
 </div>
 
@@ -30,357 +22,246 @@
 
 ## 📌 Project Overview
 
-This project is a **DevOps and Cloud Engineering showcase** built around an AI-powered banking application. While the original Spring Boot banking application concept served as the base, **the entire DevOps lifecycle was designed and implemented from scratch** — covering containerization, cloud provisioning, Kubernetes orchestration, GitOps-driven continuous delivery, and full-stack observability.
+This project is a **DevOps and Cloud Engineering showcase** built around a production-ready e-commerce web application. While the application frontend was adapted from an open-source codebase, the **entire cloud infrastructure, CI/CD pipeline, container orchestration, GitOps workflow, and observability stack** were designed and implemented from scratch.
 
-> 💡 **Core Focus:** The primary value of this project lies in its **infrastructure, automation, and operational excellence** — not the application logic.
+> **Core Focus:** Demonstrating real-world DevOps engineering — infrastructure provisioning, automated delivery pipelines, Kubernetes cluster management, and full-stack observability on AWS.
 
-### What Makes This Project Stand Out
+### ✨ What Makes This Project Stand Out
 
-| Area | Implementation |
+| Capability | Implementation |
 |---|---|
-| **Infrastructure as Code** | 100% Terraform-provisioned AWS infrastructure — zero manual cloud console clicks |
-| **GitOps Delivery** | Argo CD watches the Git repo; every merge to `main` triggers an automated EKS deployment |
-| **CI Automation** | GitHub Actions builds, tests, and pushes Docker images with semantic versioning |
-| **Observability** | Prometheus scrapes live Kubernetes metrics; Grafana dashboards surface cluster health |
-| **AI Integration** | Ollama LLM runs as a sidecar-style service, handling natural language banking queries |
-| **Production Patterns** | Namespace isolation, resource limits, liveness/readiness probes, rolling updates |
+| **Infrastructure as Code** | Entire AWS infrastructure provisioned with Terraform — repeatable, versioned, destroy-safe |
+| **Container Orchestration** | Kubernetes on AWS EKS with managed node groups, IAM roles, and autoscaling |
+| **CI Pipeline** | GitHub Actions — lint, build, Docker image push to ECR on every commit |
+| **GitOps CD** | Argo CD continuously syncs Kubernetes manifests from Git to EKS — Git is the single source of truth |
+| **Observability** | Prometheus scrapes cluster metrics; Grafana dashboards provide real-time visibility |
+| **Production Workflow** | Feature branches → PR → CI → image tag update → Argo CD auto-sync → EKS rollout |
 
 ---
 
-## 🏗️ System Architecture
+## 🏗 Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────────────┐
-│                          DEVELOPER WORKFLOW                         │
-│                                                                     │
-│   git push  ──►  GitHub Actions CI  ──►  Docker Hub / ECR          │
-│                        │                        │                  │
-│                  (Build + Test)          (Image Tagged)             │
-│                        │                        │                  │
-│                  Updates K8s Manifests           │                  │
-│                        │                        │                  │
-│                        ▼                        │                  │
-│                   Git Repo (Manifests)           │                  │
-│                        │                        │                  │
-└────────────────────────┼────────────────────────┼──────────────────┘
-                         │                        │
-                         ▼                        ▼
-┌─────────────────────────────────────────────────────────────────────┐
-│                         AWS CLOUD (EKS)                             │
-│                                                                     │
-│   ┌─────────────┐     ┌─────────────────────────────────────────┐  │
-│   │   Argo CD   │────►│             EKS Cluster                 │  │
-│   │  (GitOps)   │     │  ┌──────────────────────────────────┐  │  │
-│   └─────────────┘     │  │          banking-app NS           │  │  │
-│                        │  │  ┌────────────┐  ┌────────────┐  │  │  │
-│   ┌─────────────┐     │  │  │  Spring    │  │   Ollama   │  │  │  │
-│   │ Prometheus  │────►│  │  │  Boot Pod  │  │   AI Pod   │  │  │  │
-│   │  + Grafana  │     │  │  └────────────┘  └────────────┘  │  │  │
-│   └─────────────┘     │  └──────────────────────────────────┘  │  │
-│                        │                                         │  │
-│   ┌─────────────┐     │  ┌──────────────────────────────────┐  │  │
-│   │  Terraform  │────►│  │    AWS Load Balancer (Ingress)   │  │  │
-│   │    (IaC)    │     │  └──────────────────────────────────┘  │  │
-│   └─────────────┘     └─────────────────────────────────────────┘  │
-│                                                                     │
-└─────────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────────┐
+│                          Developer Workflow                              │
+│                                                                         │
+│   Developer → git push → GitHub → GitHub Actions CI → ECR (Docker)     │
+│                                         │                               │
+│                                   Manifest Repo ◄──── Image Tag Update  │
+│                                         │                               │
+│                                      Argo CD                            │
+│                                         │                               │
+│                              ┌──────────▼──────────┐                   │
+│                              │     AWS EKS Cluster  │                   │
+│                              │  ┌────────────────┐  │                   │
+│                              │  │   Deployment   │  │                   │
+│                              │  │  (Next.js App) │  │                   │
+│                              │  └───────┬────────┘  │                   │
+│                              │          │            │                   │
+│                              │  ┌───────▼────────┐  │                   │
+│                              │  │ Service / ALB  │  │                   │
+│                              │  └────────────────┘  │                   │
+│                              │                      │                   │
+│                              │  Prometheus + Grafana│                   │
+│                              └──────────────────────┘                   │
+│                                         │                               │
+│                              AWS: VPC · EKS · ECR · IAM · ALB          │
+└─────────────────────────────────────────────────────────────────────────┘
 ```
 
-### GitOps Flow — Mermaid Diagram
+### GitOps Flow Diagram
 
 ```mermaid
 flowchart TD
-    Dev["👨‍💻 Developer\npushes code"] --> GH["GitHub\nRepository"]
-
-    GH --> CI["⚙️ GitHub Actions\nCI Pipeline"]
-
-    CI --> Build["🔨 Build &\nUnit Test"]
-    Build --> Docker["🐳 Build Docker\nImage"]
-    Docker --> Push["📦 Push to\nDocker Hub / ECR"]
-    Push --> Manifest["📝 Update K8s\nManifest (image tag)"]
-    Manifest --> GitCommit["💾 Commit Manifest\nto Git Repo"]
-
-    GitCommit --> ArgoCD["🔄 Argo CD\nDetects Drift"]
-    ArgoCD --> Sync["🔁 Auto-Sync\nto EKS"]
-
-    Sync --> EKS["☸️ AWS EKS\nCluster"]
-
-    EKS --> App["🏦 Banking App\n(Spring Boot Pods)"]
-    EKS --> AI["🤖 Ollama\nAI Service"]
-    EKS --> LB["🌐 AWS Load\nBalancer (Ingress)"]
-
-    EKS --> Prom["📈 Prometheus\nScrapes Metrics"]
-    Prom --> Graf["📊 Grafana\nDashboards"]
-
-    style Dev fill:#4A90D9,color:#fff
-    style CI fill:#2088FF,color:#fff
-    style ArgoCD fill:#EF7B4D,color:#fff
-    style EKS fill:#FF9900,color:#fff
-    style Graf fill:#F46800,color:#fff
+    A[👨‍💻 Developer pushes code] --> B[GitHub Repository]
+    B --> C{GitHub Actions CI}
+    C --> D[🔍 Lint & Build]
+    D --> E[🐳 Docker Build]
+    E --> F[📦 Push to Amazon ECR]
+    F --> G[✏️ Update image tag in manifests repo]
+    G --> H[📁 Kubernetes Manifests Repo]
+    H --> I{Argo CD - Watches Repo}
+    I -->|Drift Detected| J[🔄 Auto-Sync to EKS]
+    J --> K[☸️ AWS EKS Cluster]
+    K --> L[🚀 Rolling Deployment]
+    L --> M[✅ App Live]
+    K --> N[📊 Prometheus Scrapes Metrics]
+    N --> O[📈 Grafana Dashboards]
 ```
 
 ---
 
-## 🛠️ Tech Stack
+## 🧰 Tech Stack
 
-<table>
-  <thead>
-    <tr>
-      <th>Layer</th>
-      <th>Technology</th>
-      <th>Purpose</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><b>Application</b></td>
-      <td>Java 17 + Spring Boot 3</td>
-      <td>RESTful banking backend, business logic</td>
-    </tr>
-    <tr>
-      <td><b>AI / LLM</b></td>
-      <td>Ollama</td>
-      <td>Local LLM inference for AI-powered banking queries</td>
-    </tr>
-    <tr>
-      <td><b>Containerization</b></td>
-      <td>Docker + Docker Compose</td>
-      <td>Reproducible, portable application packaging</td>
-    </tr>
-    <tr>
-      <td><b>Container Orchestration</b></td>
-      <td>Kubernetes (K8s)</td>
-      <td>Workload scheduling, scaling, self-healing</td>
-    </tr>
-    <tr>
-      <td><b>Cloud Platform</b></td>
-      <td>AWS EKS</td>
-      <td>Managed Kubernetes control plane on AWS</td>
-    </tr>
-    <tr>
-      <td><b>Infrastructure as Code</b></td>
-      <td>Terraform</td>
-      <td>Declarative AWS resource provisioning (VPC, EKS, IAM, etc.)</td>
-    </tr>
-    <tr>
-      <td><b>CI Pipeline</b></td>
-      <td>GitHub Actions</td>
-      <td>Automated build, test, image push, manifest update</td>
-    </tr>
-    <tr>
-      <td><b>CD / GitOps</b></td>
-      <td>Argo CD</td>
-      <td>Declarative, Git-driven continuous delivery to EKS</td>
-    </tr>
-    <tr>
-      <td><b>Metrics Collection</b></td>
-      <td>Prometheus</td>
-      <td>Kubernetes & app-level metrics scraping</td>
-    </tr>
-    <tr>
-      <td><b>Visualization</b></td>
-      <td>Grafana</td>
-      <td>Real-time dashboards, alerting, SLO tracking</td>
-    </tr>
-    <tr>
-      <td><b>Image Registry</b></td>
-      <td>Docker Hub / AWS ECR</td>
-      <td>Versioned container image storage</td>
-    </tr>
-    <tr>
-      <td><b>VCS</b></td>
-      <td>GitHub</td>
-      <td>Source of truth for both app code and K8s manifests</td>
-    </tr>
-  </tbody>
-</table>
+### Application Layer
+| Technology | Purpose |
+|---|---|
+| **Next.js** | Full-stack React framework — SSR + API routes |
+| **React** | Component-based UI |
+| **Node.js** | Runtime environment |
+
+### DevOps & Infrastructure Layer
+| Technology | Purpose |
+|---|---|
+| **Docker** | Application containerization |
+| **Kubernetes (K8s)** | Container orchestration |
+| **AWS EKS** | Managed Kubernetes control plane |
+| **AWS ECR** | Private Docker image registry |
+| **AWS VPC / ALB / IAM** | Networking, load balancing, and access control |
+| **Terraform** | Infrastructure as Code — provision all AWS resources |
+| **GitHub Actions** | CI pipeline — build, test, push |
+| **Argo CD** | GitOps-based Continuous Delivery |
+| **Prometheus** | Metrics collection and alerting |
+| **Grafana** | Visualization and dashboards |
 
 ---
 
 ## 📁 Project Structure
 
 ```
-ai-banking-gitops/
+ecommerce-gitops-eks/
 │
-├── 📁 app/                          # Spring Boot Application
-│   ├── src/
-│   │   ├── main/java/com/banking/
-│   │   │   ├── controller/          # REST API endpoints
-│   │   │   ├── service/             # Business logic + Ollama AI service
-│   │   │   ├── model/               # Domain models
-│   │   │   └── config/              # App & AI configuration
-│   │   └── resources/
-│   │       └── application.yml
-│   ├── Dockerfile                   # Multi-stage Docker build
-│   └── pom.xml
+├── app/                          # Next.js application source
+│   ├── components/               # React components
+│   ├── pages/                    # Next.js pages & API routes
+│   ├── public/                   # Static assets
+│   └── styles/                   # Global styles
 │
-├── 📁 terraform/                    # Infrastructure as Code
-│   ├── main.tf                      # Root module — EKS, VPC, IAM
-│   ├── variables.tf                 # Input variables
-│   ├── outputs.tf                   # Cluster outputs (endpoint, kubeconfig)
-│   ├── vpc.tf                       # VPC, subnets, route tables
-│   ├── eks.tf                       # EKS cluster + managed node groups
-│   └── iam.tf                       # IRSA roles, node instance profiles
+├── Dockerfile                    # Production-optimized multi-stage build
+├── .dockerignore
 │
-├── 📁 k8s/                          # Kubernetes Manifests (GitOps source of truth)
-│   ├── namespace.yaml
-│   ├── deployment.yaml              # App deployment with probes & resource limits
-│   ├── service.yaml                 # ClusterIP / LoadBalancer service
-│   ├── ingress.yaml                 # AWS ALB Ingress
-│   ├── configmap.yaml
-│   ├── hpa.yaml                     # Horizontal Pod Autoscaler
-│   └── ollama/
-│       ├── deployment.yaml          # Ollama AI service deployment
-│       └── service.yaml
+├── terraform/                    # Infrastructure as Code
+│   ├── main.tf                   # Root module
+│   ├── variables.tf              # Input variables
+│   ├── outputs.tf                # Output values
+│   ├── vpc.tf                    # VPC, subnets, IGW, route tables
+│   ├── eks.tf                    # EKS cluster + managed node groups
+│   ├── iam.tf                    # IAM roles and policies
+│   └── ecr.tf                    # ECR repository
 │
-├── 📁 argocd/                       # Argo CD Application manifests
-│   └── application.yaml             # Argo CD App-of-Apps config
+├── k8s/                          # Kubernetes manifests
+│   ├── deployment.yaml           # App Deployment with resource limits
+│   ├── service.yaml              # LoadBalancer / ALB service
+│   ├── ingress.yaml              # Ingress rules
+│   ├── configmap.yaml            # Environment configuration
+│   └── namespace.yaml            # Namespace definition
 │
-├── 📁 monitoring/                   # Observability stack
-│   ├── prometheus/
-│   │   ├── values.yaml              # kube-prometheus-stack Helm values
-│   │   └── alerting-rules.yaml
-│   └── grafana/
-│       └── dashboards/
-│           ├── kubernetes-cluster.json
-│           └── banking-app.json
+├── argocd/                       # Argo CD Application manifests
+│   └── application.yaml          # Argo CD Application CRD
 │
-├── 📁 .github/
-│   └── workflows/
-│       ├── ci.yml                   # CI: Build → Test → Push → Update manifest
-│       └── terraform-plan.yml       # Terraform plan on PR
+├── monitoring/                   # Observability stack
+│   ├── prometheus-values.yaml    # Helm values for kube-prometheus-stack
+│   └── grafana-dashboard.json    # Custom Grafana dashboard export
 │
-├── docker-compose.yml               # Local development environment
-└── README.md
+└── .github/
+    └── workflows/
+        └── ci.yaml               # GitHub Actions CI pipeline
 ```
 
 ---
 
 ## ⚙️ CI/CD Pipeline
 
-The project implements a **fully automated GitOps delivery pipeline** with a clear separation of concerns between CI (GitHub Actions) and CD (Argo CD).
+### Continuous Integration — GitHub Actions
 
-### Pipeline Overview
+Every push to `main` or a pull request triggers the CI pipeline:
 
-```mermaid
-sequenceDiagram
-    participant Dev as 👨‍💻 Developer
-    participant GH  as GitHub
-    participant CI  as GitHub Actions
-    participant Reg as Docker Registry
-    participant Repo as Manifest Repo
-    participant Argo as Argo CD
-    participant EKS as AWS EKS
+```yaml
+# .github/workflows/ci.yaml (summary)
 
-    Dev->>GH: git push / merge PR
-    GH->>CI: Trigger CI Workflow
-    CI->>CI: Run Unit Tests (Maven)
-    CI->>CI: Build Docker Image (tag: sha-XXXXXXX)
-    CI->>Reg: Push Image to Registry
-    CI->>Repo: Update image tag in deployment.yaml
-    Repo->>Argo: Drift detected (new commit)
-    Argo->>EKS: Sync — Rolling Deployment
-    EKS-->>Argo: Deployment Healthy ✅
-    Argo-->>Dev: Slack / Email notification
+Pipeline Stages:
+  1. Checkout code
+  2. Set up Node.js environment
+  3. Install dependencies & run linter
+  4. Build Next.js application
+  5. Build Docker image (multi-stage, production-optimized)
+  6. Authenticate to Amazon ECR
+  7. Push image with commit SHA tag → ECR
+  8. Update image tag in Kubernetes manifests repo (triggers Argo CD)
 ```
 
+```
+[Code Push] → [Lint] → [Build] → [Docker Build] → [ECR Push] → [Manifest Update]
+```
 
+### Continuous Delivery — Argo CD (GitOps)
+
+Argo CD is deployed inside the EKS cluster and continuously watches the Kubernetes manifests repository.
+
+
+
+**Key GitOps Principles Applied:**
+- ✅ Git as the single source of truth for cluster state
+- ✅ Declarative configuration — no imperative `kubectl apply` in production
+- ✅ Automated sync with self-healing — drift detection and auto-correction
+- ✅ Full audit trail through Git history
+
+---
 
 
 ## 📊 Monitoring & Observability
 
-The observability stack is built on the **kube-prometheus-stack**, providing full visibility into cluster health and application performance.
+The platform ships with a production-grade observability stack:
 
-### Metrics Collected
+### Prometheus
+- Deployed via the `kube-prometheus-stack` Helm chart
+- Scrapes metrics from EKS nodes, pods, and the Next.js application
+- Alerting rules configured for pod restarts, high CPU/memory, and deployment failures
 
-| Category | Metrics |
+### Grafana
+- Pre-configured dashboards for:
+  - **Cluster Overview** — node CPU, memory, pod health
+  - **Deployment Health** — rollout status, replica availability
+  - **Application Metrics** — request latency, error rates (if instrumented)
+
+
+### Key Metrics Tracked
+
+| Metric | Alert Threshold |
 |---|---|
-| **Cluster** | Node CPU/Memory utilization, pod restarts, network I/O |
-| **Application** | JVM heap, HTTP request rate, response times, error rates |
-| **Kubernetes** | Deployment replica status, HPA scaling events |
-| **Ollama AI** | Model inference latency, request queue depth |
-
-### Grafana Dashboards
-
-```
-📊 Kubernetes Cluster Overview
-   ├── Node resource utilization
-   ├── Namespace-level CPU/Memory breakdown
-   └── Pod status and restart counts
-
-📊 Banking Application Dashboard
-   ├── HTTP request throughput (req/s)
-   ├── P50 / P95 / P99 response latencies
-   ├── JVM metrics (heap, GC pause times)
-   └── Active sessions & error rate
-
-📊 AI Service Dashboard
-   ├── Ollama inference requests per minute
-   └── Model response latency distribution
-```
-
-
-## 📚 Key Learnings
-
-Working through this project end-to-end produced deep, hands-on understanding of:
-
-- **GitOps Mental Model** — Treating Git as the single source of truth for infrastructure and application state enforces discipline, auditability, and rollback simplicity. Argo CD's drift detection is a game-changer for operational stability.
-
-- **Kubernetes at Depth** — Moving beyond basic deployments to configure liveness/readiness probes, HPAs, resource requests/limits, and namespace RBAC revealed how much operational safety Kubernetes can provide when configured correctly.
-
-- **Terraform State Management** — Managing remote state with S3 + DynamoDB locking taught the criticality of state isolation, especially when collaborating or managing multiple environments.
-
-- **CI/CD Separation of Concerns** — Keeping CI (code quality, image building) and CD (deployment) as separate concerns makes pipelines more reliable, auditable, and independently scalable.
-
-- **Observability-First Thinking** — Shipping without metrics is shipping blind. Building the Prometheus + Grafana stack early changed how I thought about deployments — visibility before velocity.
-
-- **IaC Discipline** — Zero manual cloud console interactions enforced a reproducible, version-controlled infrastructure that can be torn down and rebuilt in minutes.
+| Pod CPU Usage | > 80% for 5m |
+| Pod Memory Usage | > 85% for 5m |
+| Pod Restarts | > 3 in 10m |
+| Node Not Ready | Immediate |
+| Deployment Unavailable | Immediate |
 
 ---
 
-## 🔭 Future Improvements
+## 🔑 Key Learnings
 
-- [ ] **Multi-environment GitOps** — Separate `dev` / `staging` / `prod` Argo CD ApplicationSets with promotion gates
-- [ ] **Helm Chart Migration** — Convert raw K8s manifests to parameterized Helm charts for environment-specific overrides
-- [ ] **Secrets Management** — Integrate AWS Secrets Manager or HashiCorp Vault via External Secrets Operator (ESO)
-- [ ] **Service Mesh** — Add Istio or Linkerd for mTLS, advanced traffic shaping, and distributed tracing
-- [ ] **Canary Deployments** — Implement progressive delivery using Argo Rollouts
-- [ ] **SLO Alerting** — Define SLIs/SLOs and wire multi-window, multi-burn-rate alerts in Prometheus
-- [ ] **Terraform Modules** — Refactor infrastructure into reusable, versioned modules published to Terraform Registry
-- [ ] **Cost Optimization** — Integrate AWS Spot instances and Karpenter for node autoprovisioning
-- [ ] **DORA Metrics** — Instrument deployment frequency, lead time, MTTR, and change failure rate
+Working through this project delivered deep, hands-on experience with:
 
----
+- **GitOps mental model** — understanding why Git-as-source-of-truth eliminates configuration drift and improves reliability
+- **Argo CD internals** — Application CRDs, sync policies, self-healing, resource health checks
+- **Terraform at scale** — module structure, remote state management, dependency graphs, and AWS provider nuances
+- **EKS cluster management** — IAM roles for service accounts (IRSA), managed node group lifecycle, VPC CNI plugin behavior
+- **Docker multi-stage builds** — significantly reducing final image size for production
+- **Kubernetes resource design** — defining proper resource requests/limits, liveness/readiness probes, and rolling update strategies
+- **Observability-first thinking** — instrumenting infrastructure before problems occur, not after
 
-## 🤝 Attribution
 
-The base banking application logic and Spring Boot codebase were adapted from an existing open-source project. All **DevOps, cloud infrastructure, CI/CD, GitOps, and observability implementation** — including Dockerization, Terraform, EKS provisioning, GitHub Actions pipelines, Argo CD configuration, and the full monitoring stack — were **designed, built, and documented independently** as part of this portfolio project.
 
----
-
-## 👤 Author
+## 👨‍💻 Author
 
 <div align="center">
 
-**Harsh Choubey**
+**[Harsh Choubey]**
+
+*DevOps & Cloud Engineer*
 
 
 
-
-*Open to DevOps, Platform Engineering, and Cloud Infrastructure roles.*
+*Passionate about building scalable, automated, and observable cloud-native systems.*
+*Open to DevOps, Cloud, and Platform Engineering roles.*
 
 </div>
 
 ---
 
-
-
----
-
 <div align="center">
 
-**⭐ If this project helped you learn or served as inspiration, please consider starring the repo!**
+**⭐ If this project helped or inspired you, consider starring the repo!**
 
-*Built with precision. Deployed with confidence. Monitored with clarity.*
+*Built with 🛠️ infrastructure, ☁️ cloud, and a strong GitOps mindset.*
 
 </div>
