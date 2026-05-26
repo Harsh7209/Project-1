@@ -338,20 +338,6 @@ Working through this project end-to-end produced deep, hands-on understanding of
 
 ---
 
-## 🔭 Future Improvements
-
-- [ ] **Multi-environment GitOps** — Separate `dev` / `staging` / `prod` Argo CD ApplicationSets with promotion gates
-- [ ] **Helm Chart Migration** — Convert raw K8s manifests to parameterized Helm charts for environment-specific overrides
-- [ ] **Secrets Management** — Integrate AWS Secrets Manager or HashiCorp Vault via External Secrets Operator (ESO)
-- [ ] **Service Mesh** — Add Istio or Linkerd for mTLS, advanced traffic shaping, and distributed tracing
-- [ ] **Canary Deployments** — Implement progressive delivery using Argo Rollouts
-- [ ] **SLO Alerting** — Define SLIs/SLOs and wire multi-window, multi-burn-rate alerts in Prometheus
-- [ ] **Terraform Modules** — Refactor infrastructure into reusable, versioned modules published to Terraform Registry
-- [ ] **Cost Optimization** — Integrate AWS Spot instances and Karpenter for node autoprovisioning
-- [ ] **DORA Metrics** — Instrument deployment frequency, lead time, MTTR, and change failure rate
-
----
-
 ## 🤝 Attribution
 
 The base banking application logic and Spring Boot codebase were adapted from an existing open-source project. All **DevOps, cloud infrastructure, CI/CD, GitOps, and observability implementation** — including Dockerization, Terraform, EKS provisioning, GitHub Actions pipelines, Argo CD configuration, and the full monitoring stack — were **designed, built, and documented independently** as part of this portfolio project.
