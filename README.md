@@ -1,372 +1,146 @@
-<div align="center">
+# 🚀 Terraform Capstone Project
 
-# 🏦 AI-Powered Banking App — GitOps on AWS EKS
+## 📖 Project Overview  
+The Terraform Capstone Project automates the deployment of AWS resources including EC2, S3, and DynamoDB. This project demonstrates practical use of Terraform to create a scalable architecture across multiple environments.
 
-### Production-Grade DevOps | GitOps | Cloud-Native | CI/CD
+## 🏗️ Architecture  
+The architecture consists of various AWS services integrated to work seamlessly.
+- **EC2 Instances**: Used to run applications.
+- **S3 Buckets**: For storing application data and backup.
+- **DynamoDB**: NoSQL database for storing application state.
 
-[![CI Pipeline](https://img.shields.io/github/actions/workflow/status/yourusername/ai-banking-gitops/ci.yml?branch=main&label=CI%20Pipeline&logo=github-actions&logoColor=white&style=for-the-badge)](https://github.com/yourusername/ai-banking-gitops/actions)
-[![ArgoCD](https://img.shields.io/badge/GitOps-ArgoCD-EF7B4D?style=for-the-badge&logo=argo&logoColor=white)](https://argoproj.github.io/cd/)
-[![AWS EKS](https://img.shields.io/badge/Cloud-AWS%20EKS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)](https://aws.amazon.com/eks/)
-[![Terraform](https://img.shields.io/badge/IaC-Terraform-7B42BC?style=for-the-badge&logo=terraform&logoColor=white)](https://www.terraform.io/)
-[![Kubernetes](https://img.shields.io/badge/Orchestration-Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)](https://kubernetes.io/)
-[![Spring Boot](https://img.shields.io/badge/Backend-Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
-[![Docker](https://img.shields.io/badge/Container-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
-[![Prometheus](https://img.shields.io/badge/Monitoring-Prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=white)](https://prometheus.io/)
-[![Grafana](https://img.shields.io/badge/Dashboards-Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white)](https://grafana.com/)
-[![Ollama](https://img.shields.io/badge/AI-Ollama-000000?style=for-the-badge&logo=ollama&logoColor=white)](https://ollama.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-
-<br/>
-
-> **A fully automated, production-grade GitOps pipeline deploying an AI-powered banking application on AWS EKS — showcasing end-to-end DevOps engineering: Infrastructure as Code, containerization, CI/CD automation, GitOps delivery, and real-time observability.**
-
-<br/>
-
-[🚀 Architecture](#-system-architecture) · [⚙️ CI/CD Pipeline](#️-cicd-pipeline) · [🛠️ Tech Stack](#️-tech-stack) · [📁 Project Structure](#-project-structure) · [🚢 Deployment](#-deployment-guide) · [📊 Monitoring](#-monitoring--observability) · [📚 Learnings](#-key-learnings)
-
-</div>
-
----
-
-## 📌 Project Overview
-
-This project is a **DevOps and Cloud Engineering showcase** built around an AI-powered banking application. While the original Spring Boot banking application concept served as the base, **the entire DevOps lifecycle was designed and implemented from scratch** — covering containerization, cloud provisioning, Kubernetes orchestration, GitOps-driven continuous delivery, and full-stack observability.
-
-> 💡 **Core Focus:** The primary value of this project lies in its **infrastructure, automation, and operational excellence** — not the application logic.
-
-### What Makes This Project Stand Out
-
-| Area | Implementation |
-|---|---|
-| **Infrastructure as Code** | 100% Terraform-provisioned AWS infrastructure — zero manual cloud console clicks |
-| **GitOps Delivery** | Argo CD watches the Git repo; every merge to `main` triggers an automated EKS deployment |
-| **CI Automation** | GitHub Actions builds, tests, and pushes Docker images with semantic versioning |
-| **Observability** | Prometheus scrapes live Kubernetes metrics; Grafana dashboards surface cluster health |
-| **AI Integration** | Ollama LLM runs as a sidecar-style service, handling natural language banking queries |
-| **Production Patterns** | Namespace isolation, resource limits, liveness/readiness probes, rolling updates |
-
----
-
-## 🏗️ System Architecture
-
+## 📂 Project Structure  
 ```
-┌─────────────────────────────────────────────────────────────────────┐
-│                          DEVELOPER WORKFLOW                         │
-│                                                                     │
-│   git push  ──►  GitHub Actions CI  ──►  Docker Hub / ECR          │
-│                        │                        │                  │
-│                  (Build + Test)          (Image Tagged)             │
-│                        │                        │                  │
-│                  Updates K8s Manifests           │                  │
-│                        │                        │                  │
-│                        ▼                        │                  │
-│                   Git Repo (Manifests)           │                  │
-│                        │                        │                  │
-└────────────────────────┼────────────────────────┼──────────────────┘
-                         │                        │
-                         ▼                        ▼
-┌─────────────────────────────────────────────────────────────────────┐
-│                         AWS CLOUD (EKS)                             │
-│                                                                     │
-│   ┌─────────────┐     ┌─────────────────────────────────────────┐  │
-│   │   Argo CD   │────►│             EKS Cluster                 │  │
-│   │  (GitOps)   │     │  ┌──────────────────────────────────┐  │  │
-│   └─────────────┘     │  │          banking-app NS           │  │  │
-│                        │  │  ┌────────────┐  ┌────────────┐  │  │  │
-│   ┌─────────────┐     │  │  │  Spring    │  │   Ollama   │  │  │  │
-│   │ Prometheus  │────►│  │  │  Boot Pod  │  │   AI Pod   │  │  │  │
-│   │  + Grafana  │     │  │  └────────────┘  └────────────┘  │  │  │
-│   └─────────────┘     │  └──────────────────────────────────┘  │  │
-│                        │                                         │  │
-│   ┌─────────────┐     │  ┌──────────────────────────────────┐  │  │
-│   │  Terraform  │────►│  │    AWS Load Balancer (Ingress)   │  │  │
-│   │    (IaC)    │     │  └──────────────────────────────────┘  │  │
-│   └─────────────┘     └─────────────────────────────────────────┘  │
-│                                                                     │
-└─────────────────────────────────────────────────────────────────────┘
-```
+terraform-capstone/
+├── main.tf              # Main Terraform configuration
+├── variables.tf         # Input variables
+├── outputs.tf           # Outputs after deployment
+├── modules/             # Contains reusable modules
+│   ├── ec2/             # EC2 module
+│   ├── s3/              # S3 module
+│   └── dynamodb/        # DynamoDB module
+└── env/                # Environment specific configurations
+    ├── dev/
+    ├── stg/
+    └── prod/
+``` 
 
-### GitOps Flow — Mermaid Diagram
+## 🔧 Prerequisites  
+- AWS Account  
+- Terraform installed on your local machine  
+- AWS CLI configured  
 
-```mermaid
-flowchart TD
-    Dev["👨‍💻 Developer\npushes code"] --> GH["GitHub\nRepository"]
+## 🏁 Getting Started Guide  
+### Step-by-Step Instructions  
+1. Clone the repository:  
+   ```bash  
+   git clone https://github.com/Harsh7209/terraform-capstone.git  
+   ```  
+2. Navigate to the project directory:  
+   ```bash  
+   cd terraform-capstone  
+   ```  
+3. Initialize Terraform:  
+   ```bash  
+   terraform init  
+   ```  
+4. Plan your deployment:  
+   ```bash  
+   terraform plan  
+   ```  
+5. Apply the changes:  
+   ```bash  
+   terraform apply  
+   ```  
 
-    GH --> CI["⚙️ GitHub Actions\nCI Pipeline"]
+## 🌍 Environment Configuration  
+| Environment | EC2 Instance Type | S3 Bucket Name      | DynamoDB Table Name |  
+|-------------|-------------------|----------------------|----------------------|  
+| Dev         | t2.micro          | dev-bucket           | dev-table            |  
+| Staging     | t2.medium         | stg-bucket           | stg-table            |  
+| Production   | t2.large          | prod-bucket          | prod-table           |  
 
-    CI --> Build["🔨 Build &\nUnit Test"]
-    Build --> Docker["🐳 Build Docker\nImage"]
-    Docker --> Push["📦 Push to\nDocker Hub / ECR"]
-    Push --> Manifest["📝 Update K8s\nManifest (image tag)"]
-    Manifest --> GitCommit["💾 Commit Manifest\nto Git Repo"]
+## 🔧 Troubleshooting
+# Issue: "Provider AWS not found"
+Solution: Run terraform init to download the AWS provider.
 
-    GitCommit --> ArgoCD["🔄 Argo CD\nDetects Drift"]
-    ArgoCD --> Sync["🔁 Auto-Sync\nto EKS"]
+# Issue: "Invalid provider version"
+Solution: Update AWS provider version in terraform.tf or run:
 
-    Sync --> EKS["☸️ AWS EKS\nCluster"]
+# Bash
+terraform init -upgrade 
 
-    EKS --> App["🏦 Banking App\n(Spring Boot Pods)"]
-    EKS --> AI["🤖 Ollama\nAI Service"]
-    EKS --> LB["🌐 AWS Load\nBalancer (Ingress)"]
+Issue: "Workspace does not exist" 
 
-    EKS --> Prom["📈 Prometheus\nScrapes Metrics"]
-    Prom --> Graf["📊 Grafana\nDashboards"]
+Solution: Create the workspace first:
 
-    style Dev fill:#4A90D9,color:#fff
-    style CI fill:#2088FF,color:#fff
-    style ArgoCD fill:#EF7B4D,color:#fff
-    style EKS fill:#FF9900,color:#fff
-    style Graf fill:#F46800,color:#fff
-```
+# Bash
+terraform workspace new <workspace-name> 
 
----
+Issue: "Insufficient permissions" 
 
-## 🛠️ Tech Stack
+Solution: Verify AWS credentials:  
 
-<table>
-  <thead>
-    <tr>
-      <th>Layer</th>
-      <th>Technology</th>
-      <th>Purpose</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><b>Application</b></td>
-      <td>Java 17 + Spring Boot 3</td>
-      <td>RESTful banking backend, business logic</td>
-    </tr>
-    <tr>
-      <td><b>AI / LLM</b></td>
-      <td>Ollama</td>
-      <td>Local LLM inference for AI-powered banking queries</td>
-    </tr>
-    <tr>
-      <td><b>Containerization</b></td>
-      <td>Docker + Docker Compose</td>
-      <td>Reproducible, portable application packaging</td>
-    </tr>
-    <tr>
-      <td><b>Container Orchestration</b></td>
-      <td>Kubernetes (K8s)</td>
-      <td>Workload scheduling, scaling, self-healing</td>
-    </tr>
-    <tr>
-      <td><b>Cloud Platform</b></td>
-      <td>AWS EKS</td>
-      <td>Managed Kubernetes control plane on AWS</td>
-    </tr>
-    <tr>
-      <td><b>Infrastructure as Code</b></td>
-      <td>Terraform</td>
-      <td>Declarative AWS resource provisioning (VPC, EKS, IAM, etc.)</td>
-    </tr>
-    <tr>
-      <td><b>CI Pipeline</b></td>
-      <td>GitHub Actions</td>
-      <td>Automated build, test, image push, manifest update</td>
-    </tr>
-    <tr>
-      <td><b>CD / GitOps</b></td>
-      <td>Argo CD</td>
-      <td>Declarative, Git-driven continuous delivery to EKS</td>
-    </tr>
-    <tr>
-      <td><b>Metrics Collection</b></td>
-      <td>Prometheus</td>
-      <td>Kubernetes & app-level metrics scraping</td>
-    </tr>
-    <tr>
-      <td><b>Visualization</b></td>
-      <td>Grafana</td>
-      <td>Real-time dashboards, alerting, SLO tracking</td>
-    </tr>
-    <tr>
-      <td><b>Image Registry</b></td>
-      <td>Docker Hub / AWS ECR</td>
-      <td>Versioned container image storage</td>
-    </tr>
-    <tr>
-      <td><b>VCS</b></td>
-      <td>GitHub</td>
-      <td>Source of truth for both app code and K8s manifests</td>
-    </tr>
-  </tbody>
-</table>
+# Bash
+aws sts get-caller-identity 
 
----
+Ensure your IAM user has EC2, S3, and DynamoDB permissions.
 
-## 📁 Project Structure
+# Issue: "Resource already exists"
+Solution: Check AWS Console for existing resources 
 
-```
-ai-banking-gitops/
-│
-├── 📁 app/                          # Spring Boot Application
-│   ├── src/
-│   │   ├── main/java/com/banking/
-│   │   │   ├── controller/          # REST API endpoints
-│   │   │   ├── service/             # Business logic + Ollama AI service
-│   │   │   ├── model/               # Domain models
-│   │   │   └── config/              # App & AI configuration
-│   │   └── resources/
-│   │       └── application.yml
-│   ├── Dockerfile                   # Multi-stage Docker build
-│   └── pom.xml
-│
-├── 📁 terraform/                    # Infrastructure as Code
-│   ├── main.tf                      # Root module — EKS, VPC, IAM
-│   ├── variables.tf                 # Input variables
-│   ├── outputs.tf                   # Cluster outputs (endpoint, kubeconfig)
-│   ├── vpc.tf                       # VPC, subnets, route tables
-│   ├── eks.tf                       # EKS cluster + managed node groups
-│   └── iam.tf                       # IRSA roles, node instance profiles
-│
-├── 📁 k8s/                          # Kubernetes Manifests (GitOps source of truth)
-│   ├── namespace.yaml
-│   ├── deployment.yaml              # App deployment with probes & resource limits
-│   ├── service.yaml                 # ClusterIP / LoadBalancer service
-│   ├── ingress.yaml                 # AWS ALB Ingress
-│   ├── configmap.yaml
-│   ├── hpa.yaml                     # Horizontal Pod Autoscaler
-│   └── ollama/
-│       ├── deployment.yaml          # Ollama AI service deployment
-│       └── service.yaml
-│
-├── 📁 argocd/                       # Argo CD Application manifests
-│   └── application.yaml             # Argo CD App-of-Apps config
-│
-├── 📁 monitoring/                   # Observability stack
-│   ├── prometheus/
-│   │   ├── values.yaml              # kube-prometheus-stack Helm values
-│   │   └── alerting-rules.yaml
-│   └── grafana/
-│       └── dashboards/
-│           ├── kubernetes-cluster.json
-│           └── banking-app.json
-│
-├── 📁 .github/
-│   └── workflows/
-│       ├── ci.yml                   # CI: Build → Test → Push → Update manifest
-│       └── terraform-plan.yml       # Terraform plan on PR
-│
-├── docker-compose.yml               # Local development environment
-└── README.md
-```
-
----
-
-## ⚙️ CI/CD Pipeline
-
-The project implements a **fully automated GitOps delivery pipeline** with a clear separation of concerns between CI (GitHub Actions) and CD (Argo CD).
-
-### Pipeline Overview
-
-```mermaid
-sequenceDiagram
-    participant Dev as 👨‍💻 Developer
-    participant GH  as GitHub
-    participant CI  as GitHub Actions
-    participant Reg as Docker Registry
-    participant Repo as Manifest Repo
-    participant Argo as Argo CD
-    participant EKS as AWS EKS
-
-    Dev->>GH: git push / merge PR
-    GH->>CI: Trigger CI Workflow
-    CI->>CI: Run Unit Tests (Maven)
-    CI->>CI: Build Docker Image (tag: sha-XXXXXXX)
-    CI->>Reg: Push Image to Registry
-    CI->>Repo: Update image tag in deployment.yaml
-    Repo->>Argo: Drift detected (new commit)
-    Argo->>EKS: Sync — Rolling Deployment
-    EKS-->>Argo: Deployment Healthy ✅
-    Argo-->>Dev: Slack / Email notification
-```
+# Bash
+terraform destroy
+terraform apply
+Issue: "Invalid SSH key"
+Solution: Update the public key in modules/ec2/main.tf
 
 
 
+## ✨ Key Features
 
-## 📊 Monitoring & Observability
+# 1. Multi-Environment Support
+Dev, Staging, and Production environments
+Independent state per environment using workspaces
+Automatic scaling based on environment
 
-The observability stack is built on the **kube-prometheus-stack**, providing full visibility into cluster health and application performance.
+# 2. Modular Design
+Reusable EC2, S3, and DynamoDB modules
+Each module is self-contained with its own variables
+Easy to add new modules
 
-### Metrics Collected
-
-| Category | Metrics |
-|---|---|
-| **Cluster** | Node CPU/Memory utilization, pod restarts, network I/O |
-| **Application** | JVM heap, HTTP request rate, response times, error rates |
-| **Kubernetes** | Deployment replica status, HPA scaling events |
-| **Ollama AI** | Model inference latency, request queue depth |
-
-### Grafana Dashboards
-
-```
-📊 Kubernetes Cluster Overview
-   ├── Node resource utilization
-   ├── Namespace-level CPU/Memory breakdown
-   └── Pod status and restart counts
-
-📊 Banking Application Dashboard
-   ├── HTTP request throughput (req/s)
-   ├── P50 / P95 / P99 response latencies
-   ├── JVM metrics (heap, GC pause times)
-   └── Active sessions & error rate
-
-📊 AI Service Dashboard
-   ├── Ollama inference requests per minute
-   └── Model response latency distribution
-```
+# 3. Scalability
+Use count parameter for dynamic resource creation
+Simple variable adjustment for resource scaling
+Supports adding new environments easily
+ # 4. Security
+Security group with SSH, HTTP, and HTTPS access
+Key pair for secure EC2 access
+DynamoDB with PAY_PER_REQUEST billing (no unused capacity)
+ # 5. Naming Convention
+Environment-based resource naming (e.g., dev-terra-server-1)
+Consistent tagging across all resources
+Easy resource identification in AWS Console
+# 6. Cost Optimization
+t3.micro instances (cost-effective)
+Configurable resource counts per environment
+DynamoDB PAY_PER_REQUEST billing
 
 
-## 📚 Key Learnings
-
-Working through this project end-to-end produced deep, hands-on understanding of:
-
-- **GitOps Mental Model** — Treating Git as the single source of truth for infrastructure and application state enforces discipline, auditability, and rollback simplicity. Argo CD's drift detection is a game-changer for operational stability.
-
-- **Kubernetes at Depth** — Moving beyond basic deployments to configure liveness/readiness probes, HPAs, resource requests/limits, and namespace RBAC revealed how much operational safety Kubernetes can provide when configured correctly.
-
-- **Terraform State Management** — Managing remote state with S3 + DynamoDB locking taught the criticality of state isolation, especially when collaborating or managing multiple environments.
-
-- **CI/CD Separation of Concerns** — Keeping CI (code quality, image building) and CD (deployment) as separate concerns makes pipelines more reliable, auditable, and independently scalable.
-
-- **Observability-First Thinking** — Shipping without metrics is shipping blind. Building the Prometheus + Grafana stack early changed how I thought about deployments — visibility before velocity.
-
-- **IaC Discipline** — Zero manual cloud console interactions enforced a reproducible, version-controlled infrastructure that can be torn down and rebuilt in minutes.
-
----
-
-## 🤝 Attribution
-
-The base banking application logic and Spring Boot codebase were adapted from an existing open-source project. All **DevOps, cloud infrastructure, CI/CD, GitOps, and observability implementation** — including Dockerization, Terraform, EKS provisioning, GitHub Actions pipelines, Argo CD configuration, and the full monitoring stack — were **designed, built, and documented independently** as part of this portfolio project.
-
----
-
-## 👤 Author
-
-<div align="center">
-
-**Harsh Choubey**
+## 🥇 Best Practices  
+- Use version control for your Terraform scripts.  
+- Regularly update your modules to include security patches.  
 
 
 
+## 🚀 Future Enhancements  
+- Integration with CI/CD pipelines  
+- Add more AWS services like RDS and Lambda  
 
-*Open to DevOps, Platform Engineering, and Cloud Infrastructure roles.*
+## 👤 Author Information  
+- **Name**: Harsh  
+- **GitHub**: [Harsh7209](https://github.com/Harsh7209)  
+- **Email**: harshchoubey113@example.com  
 
-</div>
-
----
-
-
-
----
-
-<div align="center">
-
-**⭐ If this project helped you learn or served as inspiration, please consider starring the repo!**
-
-*Built with precision. Deployed with confidence. Monitored with clarity.*
-
-</div>
+---  
+This README is intended to provide all necessary information for deploying and using the resources configured through the Terraform Capstone project effectively.
