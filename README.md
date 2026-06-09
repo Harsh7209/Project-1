@@ -1,478 +1,386 @@
-# 🚀 DevOps Portfolio
-
 <div align="center">
 
-![DevOps Portfolio](https://img.shields.io/badge/DevOps-Portfolio-blue?style=for-the-badge&logo=github)
-![JavaScript](https://img.shields.io/badge/JavaScript-89%25-yellow?style=for-the-badge&logo=javascript)
-![CSS](https://img.shields.io/badge/CSS-9.9%25-blueviolet?style=for-the-badge&logo=css3)
-![HTML](https://img.shields.io/badge/HTML-1.1%25-orange?style=for-the-badge&logo=html5)
+# 🏦 AI-Powered Banking App — GitOps on AWS EKS
 
-**A modern, interactive portfolio showcasing DevOps expertise, cloud infrastructure, and containerization skills**
+### Production-Grade DevOps | GitOps | Cloud-Native | CI/CD
 
-[🌐 Live Demo](#-live-demo) • [✨ Features](#-features) • [🛠️ Tech Stack](#-tech-stack) • [🚀 Quick Start](#-quick-start) • [📚 Documentation](#-documentation)
-
-</div>
-
----
-
-## 📌 Table of Contents
-
-- [About](#-about)
-- [Live Demo](#-live-demo)
-- [✨ Features](#-features)
-- [🛠️ Tech Stack](#-tech-stack)
-- [📊 Project Architecture](#-project-architecture)
-- [🚀 Quick Start](#-quick-start)
-- [📁 Project Structure](#-project-structure)
-- [🎨 Customization](#-customization)
-- [🔧 Configuration](#-configuration)
-- [📚 Documentation](#-documentation)
-- [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
-- [💬 Support](#-support)
-
----
-
-## 🎯 About
-
-**DevOps Portfolio** is a cutting-edge, professionally designed portfolio website built to showcase your DevOps expertise, cloud infrastructure knowledge, containerization skills, and CI/CD pipeline experience. This fully responsive, modern portfolio demonstrates your capability to build scalable, maintainable, and visually stunning web applications.
-
-Perfect for:
-- 👨‍💼 DevOps Engineers looking to impress employers
-- ☁️ Cloud Infrastructure Specialists
-- 🐳 Container & Kubernetes enthusiasts
-- 🔄 CI/CD Pipeline Architects
-- 📊 Infrastructure as Code (IaC) practitioners
-
----
-
-## 🌐 Live Demo
-
-<div align="center">
-
-### 🎪 [View Live Portfolio](https://portfolio-beryl-three-78.vercel.app)
+[![CI Pipeline](https://img.shields.io/github/actions/workflow/status/yourusername/ai-banking-gitops/ci.yml?branch=main&label=CI%20Pipeline&logo=github-actions&logoColor=white&style=for-the-badge)](https://github.com/yourusername/ai-banking-gitops/actions)
+[![ArgoCD](https://img.shields.io/badge/GitOps-ArgoCD-EF7B4D?style=for-the-badge&logo=argo&logoColor=white)](https://argoproj.github.io/cd/)
+[![AWS EKS](https://img.shields.io/badge/Cloud-AWS%20EKS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)](https://aws.amazon.com/eks/)
+[![Terraform](https://img.shields.io/badge/IaC-Terraform-7B42BC?style=for-the-badge&logo=terraform&logoColor=white)](https://www.terraform.io/)
+[![Kubernetes](https://img.shields.io/badge/Orchestration-Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)](https://kubernetes.io/)
+[![Spring Boot](https://img.shields.io/badge/Backend-Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
+[![Docker](https://img.shields.io/badge/Container-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
+[![Prometheus](https://img.shields.io/badge/Monitoring-Prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=white)](https://prometheus.io/)
+[![Grafana](https://img.shields.io/badge/Dashboards-Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white)](https://grafana.com/)
+[![Ollama](https://img.shields.io/badge/AI-Ollama-000000?style=for-the-badge&logo=ollama&logoColor=white)](https://ollama.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 <br/>
 
-**✨ The live demo showcases:**
-- ⚡ Ultra-fast performance metrics
-- 📱 Mobile-first responsive design
-- 🎨 Modern UI/UX with smooth animations
-- 🌙 Dark/Light mode support
-- ♿ Full accessibility compliance
+> **A fully automated, production-grade GitOps pipeline deploying an AI-powered banking application on AWS EKS — showcasing end-to-end DevOps engineering: Infrastructure as Code, containerization, CI/CD automation, GitOps delivery, and real-time observability.**
+
+<br/>
+
+[🚀 Architecture](#-system-architecture) · [⚙️ CI/CD Pipeline](#️-cicd-pipeline) · [🛠️ Tech Stack](#️-tech-stack) · [📁 Project Structure](#-project-structure) · [🚢 Deployment](#-deployment-guide) · [📊 Monitoring](#-monitoring--observability) · [📚 Learnings](#-key-learnings)
 
 </div>
 
 ---
 
-## ✨ Features
+## 📌 Project Overview
 
-### 🎨 **Visual Excellence**
-- ✅ Modern, sleek design with gradient backgrounds
-- ✅ Smooth animations and transitions
-- ✅ Interactive hover effects
-- ✅ Professional typography
-- ✅ Responsive grid layouts
+This project is a **DevOps and Cloud Engineering showcase** built around an AI-powered banking application. While the original Spring Boot banking application concept served as the base, **the entire DevOps lifecycle was designed and implemented from scratch** — covering containerization, cloud provisioning, Kubernetes orchestration, GitOps-driven continuous delivery, and full-stack observability.
 
-### 📱 **Responsive Design**
-- ✅ Mobile-first approach
-- ✅ Tablet optimization
-- ✅ Desktop perfection
-- ✅ Cross-browser compatibility
-- ✅ Touch-friendly navigation
+> 💡 **Core Focus:** The primary value of this project lies in its **infrastructure, automation, and operational excellence** — not the application logic.
 
-### ⚡ **Performance**
-- ✅ Optimized assets
-- ✅ Fast load times
-- ✅ Minimal dependencies
-- ✅ Efficient resource management
-- ✅ Production-ready code
+### What Makes This Project Stand Out
 
-### 🔄 **Interactive Elements**
-- ✅ Smooth scrolling
-- ✅ Dynamic project filters
-- ✅ Modal galleries
-- ✅ Form validation
-- ✅ Real-time interactions
+| Area | Implementation |
+|---|---|
+| **Infrastructure as Code** | 100% Terraform-provisioned AWS infrastructure — zero manual cloud console clicks |
+| **GitOps Delivery** | Argo CD watches the Git repo; every merge to `main` triggers an automated EKS deployment |
+| **CI Automation** | GitHub Actions builds, tests, and pushes Docker images with semantic versioning |
+| **Observability** | Prometheus scrapes live Kubernetes metrics; Grafana dashboards surface cluster health |
+| **AI Integration** | Ollama LLM runs as a sidecar-style service, handling natural language banking queries |
+| **Production Patterns** | Namespace isolation, resource limits, liveness/readiness probes, rolling updates |
 
-### 🎯 **User Experience**
-- ✅ Intuitive navigation
-- ✅ Clear call-to-actions
-- ✅ Fast page transitions
-- ✅ Engaging micro-interactions
-- ✅ Professional content structure
+---
 
-### ♿ **Accessibility**
-- ✅ WCAG 2.1 AA compliant
-- ✅ Keyboard navigation support
-- ✅ Screen reader friendly
-- ✅ High contrast mode
-- ✅ Semantic HTML
+## 🏗️ System Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                          DEVELOPER WORKFLOW                         │
+│                                                                     │
+│   git push  ──►  GitHub Actions CI  ──►  Docker Hub / ECR          │
+│                        │                        │                  │
+│                  (Build + Test)          (Image Tagged)             │
+│                        │                        │                  │
+│                  Updates K8s Manifests           │                  │
+│                        │                        │                  │
+│                        ▼                        │                  │
+│                   Git Repo (Manifests)           │                  │
+│                        │                        │                  │
+└────────────────────────┼────────────────────────┼──────────────────┘
+                         │                        │
+                         ▼                        ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                         AWS CLOUD (EKS)                             │
+│                                                                     │
+│   ┌─────────────┐     ┌─────────────────────────────────────────┐  │
+│   │   Argo CD   │────►│             EKS Cluster                 │  │
+│   │  (GitOps)   │     │  ┌──────────────────────────────────┐  │  │
+│   └─────────────┘     │  │          banking-app NS           │  │  │
+│                        │  │  ┌────────────┐  ┌────────────┐  │  │  │
+│   ┌─────────────┐     │  │  │  Spring    │  │   Ollama   │  │  │  │
+│   │ Prometheus  │────►│  │  │  Boot Pod  │  │   AI Pod   │  │  │  │
+│   │  + Grafana  │     │  │  └────────────┘  └────────────┘  │  │  │
+│   └─────────────┘     │  └──────────────────────────────────┘  │  │
+│                        │                                         │  │
+│   ┌─────────────┐     │  ┌──────────────────────────────────┐  │  │
+│   │  Terraform  │────►│  │    AWS Load Balancer (Ingress)   │  │  │
+│   │    (IaC)    │     │  └──────────────────────────────────┘  │  │
+│   └─────────────┘     └─────────────────────────────────────────┘  │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### GitOps Flow — Mermaid Diagram
+
+```mermaid
+flowchart TD
+    Dev["👨‍💻 Developer\npushes code"] --> GH["GitHub\nRepository"]
+
+    GH --> CI["⚙️ GitHub Actions\nCI Pipeline"]
+
+    CI --> Build["🔨 Build &\nUnit Test"]
+    Build --> Docker["🐳 Build Docker\nImage"]
+    Docker --> Push["📦 Push to\nDocker Hub / ECR"]
+    Push --> Manifest["📝 Update K8s\nManifest (image tag)"]
+    Manifest --> GitCommit["💾 Commit Manifest\nto Git Repo"]
+
+    GitCommit --> ArgoCD["🔄 Argo CD\nDetects Drift"]
+    ArgoCD --> Sync["🔁 Auto-Sync\nto EKS"]
+
+    Sync --> EKS["☸️ AWS EKS\nCluster"]
+
+    EKS --> App["🏦 Banking App\n(Spring Boot Pods)"]
+    EKS --> AI["🤖 Ollama\nAI Service"]
+    EKS --> LB["🌐 AWS Load\nBalancer (Ingress)"]
+
+    EKS --> Prom["📈 Prometheus\nScrapes Metrics"]
+    Prom --> Graf["📊 Grafana\nDashboards"]
+
+    style Dev fill:#4A90D9,color:#fff
+    style CI fill:#2088FF,color:#fff
+    style ArgoCD fill:#EF7B4D,color:#fff
+    style EKS fill:#FF9900,color:#fff
+    style Graf fill:#F46800,color:#fff
+```
 
 ---
 
 ## 🛠️ Tech Stack
 
-### **Frontend Framework**
-```
-┌─────────────────────────────────────────────┐
-│         TECHNOLOGY COMPOSITION              │
-├─────────────────────────────────────────────┤
-│  JavaScript (89%)  ████████████████████    │
-│  CSS          (9.9%)  ██                   │
-│  HTML         (1.1%)  ▌                    │
-└─────────────────────────────────────────────┘
-```
-
-### **Core Technologies**
-
-| Category | Technology | Purpose |
-|----------|-----------|---------|
-| **Frontend** | JavaScript (ES6+) | Core application logic |
-| **Styling** | CSS3 | Beautiful, responsive styling |
-| **Markup** | HTML5 | Semantic structure |
-| **Hosting** | Vercel | Fast, reliable deployment |
-| **Version Control** | Git | Source code management |
-| **Package Manager** | npm/yarn | Dependency management |
-
-### **Key Libraries & Tools**
-- 📦 **Module Bundler**: Webpack/Vite (if applicable)
-- 🎨 **CSS Preprocessor**: SASS/LESS (if applicable)
-- 🧪 **Testing**: Jest/Mocha (if applicable)
-- 📝 **Linting**: ESLint/Prettier (if applicable)
-- 🚀 **Build Tools**: npm scripts
-- ☁️ **Hosting**: Vercel (Serverless deployment)
-
----
-
-## 📊 Project Architecture
-
-```
-┌──────────────────────────────────────────────────┐
-│          DevOps Portfolio Architecture           │
-├──────────────────────────────────────────────────┤
-│                                                  │
-│  ┌─────────────────────────────────────────┐   │
-│  │         CLIENT (Browser)                │   │
-│  │  ┌──────────────────────────────────┐  │   │
-│  │  │   HTML5 + CSS3 + JavaScript      │  │   │
-│  │  │   Responsive UI Components       │  │   │
-│  │  │   Interactive Elements           │  │   │
-│  │  └──────────────────────────────────┘  │   │
-│  └─────────────────────────────────────────┘   │
-│                     │                          │
-│  ┌──────────────────▼──────────────────────┐   │
-│  │      STATIC FILE SERVING (Vercel)      │   │
-│  │   - Optimized delivery                 │   │
-│  │   - Global CDN                         │   │
-│  │   - Edge caching                       │   │
-│  └─────────────────────────────────────────┘   │
-│                                                  │
-└──────────────────────────────────────────────────┘
-```
-
----
-
-## 🚀 Quick Start
-
-### **Prerequisites**
-
-Before you begin, ensure you have the following installed:
-
-- ✅ **Node.js** (v14.0 or higher)
-- ✅ **npm** or **yarn** (v6.0 or higher)
-- ✅ **Git** (for version control)
-- ✅ **Vercel CLI** (optional, for deployment)
-
-```bash
-# Check Node.js installation
-node --version
-npm --version
-```
-
-### **Installation**
-
-```bash
-# 1️⃣ Clone the repository
-git clone https://github.com/Harsh7209/DevOps-Portfolio.git
-cd DevOps-Portfolio
-
-# 2️⃣ Install dependencies
-npm install
-# or
-yarn install
-
-# 3️⃣ Start the development server
-npm start
-# or
-yarn start
-
-# 4️⃣ Open your browser
-# Navigate to http://localhost:3000
-```
-
-### **Build for Production**
-
-```bash
-# Create optimized production build
-npm run build
-# or
-yarn build
-
-# Serve production build locally
-npm run serve
-# or
-yarn serve
-```
-
-### **Deploy to Vercel**
-
-```bash
-# Install Vercel CLI globally
-npm install -g vercel
-
-# Deploy your project
-vercel
-
-# Deploy with environment variables
-vercel --env
-```
+<table>
+  <thead>
+    <tr>
+      <th>Layer</th>
+      <th>Technology</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Application</b></td>
+      <td>Java 17 + Spring Boot 3</td>
+      <td>RESTful banking backend, business logic</td>
+    </tr>
+    <tr>
+      <td><b>AI / LLM</b></td>
+      <td>Ollama</td>
+      <td>Local LLM inference for AI-powered banking queries</td>
+    </tr>
+    <tr>
+      <td><b>Containerization</b></td>
+      <td>Docker + Docker Compose</td>
+      <td>Reproducible, portable application packaging</td>
+    </tr>
+    <tr>
+      <td><b>Container Orchestration</b></td>
+      <td>Kubernetes (K8s)</td>
+      <td>Workload scheduling, scaling, self-healing</td>
+    </tr>
+    <tr>
+      <td><b>Cloud Platform</b></td>
+      <td>AWS EKS</td>
+      <td>Managed Kubernetes control plane on AWS</td>
+    </tr>
+    <tr>
+      <td><b>Infrastructure as Code</b></td>
+      <td>Terraform</td>
+      <td>Declarative AWS resource provisioning (VPC, EKS, IAM, etc.)</td>
+    </tr>
+    <tr>
+      <td><b>CI Pipeline</b></td>
+      <td>GitHub Actions</td>
+      <td>Automated build, test, image push, manifest update</td>
+    </tr>
+    <tr>
+      <td><b>CD / GitOps</b></td>
+      <td>Argo CD</td>
+      <td>Declarative, Git-driven continuous delivery to EKS</td>
+    </tr>
+    <tr>
+      <td><b>Metrics Collection</b></td>
+      <td>Prometheus</td>
+      <td>Kubernetes & app-level metrics scraping</td>
+    </tr>
+    <tr>
+      <td><b>Visualization</b></td>
+      <td>Grafana</td>
+      <td>Real-time dashboards, alerting, SLO tracking</td>
+    </tr>
+    <tr>
+      <td><b>Image Registry</b></td>
+      <td>Docker Hub / AWS ECR</td>
+      <td>Versioned container image storage</td>
+    </tr>
+    <tr>
+      <td><b>VCS</b></td>
+      <td>GitHub</td>
+      <td>Source of truth for both app code and K8s manifests</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
 ## 📁 Project Structure
 
 ```
-DevOps-Portfolio/
+ai-banking-gitops/
 │
-├── 📄 index.html              # Main HTML file
-├── 📄 README.md               # This file
-├── 📄 package.json            # Project metadata & dependencies
-├── 📄 .gitignore              # Git ignore rules
+├── 📁 app/                          # Spring Boot Application
+│   ├── src/
+│   │   ├── main/java/com/banking/
+│   │   │   ├── controller/          # REST API endpoints
+│   │   │   ├── service/             # Business logic + Ollama AI service
+│   │   │   ├── model/               # Domain models
+│   │   │   └── config/              # App & AI configuration
+│   │   └── resources/
+│   │       └── application.yml
+│   ├── Dockerfile                   # Multi-stage Docker build
+│   └── pom.xml
 │
-├── 📂 css/                    # CSS Stylesheets
-│   ├── style.css              # Main styles
-│   ├── responsive.css         # Mobile-first responsive styles
-│   └── animations.css         # Smooth animations & transitions
+├── 📁 terraform/                    # Infrastructure as Code
+│   ├── main.tf                      # Root module — EKS, VPC, IAM
+│   ├── variables.tf                 # Input variables
+│   ├── outputs.tf                   # Cluster outputs (endpoint, kubeconfig)
+│   ├── vpc.tf                       # VPC, subnets, route tables
+│   ├── eks.tf                       # EKS cluster + managed node groups
+│   └── iam.tf                       # IRSA roles, node instance profiles
 │
-├── 📂 js/                     # JavaScript Files
-│   ├── main.js                # Core application logic
-│   ├── components.js          # Reusable components
-│   ├── animations.js          # Animation handlers
-│   └── utils.js               # Utility functions
+├── 📁 k8s/                          # Kubernetes Manifests (GitOps source of truth)
+│   ├── namespace.yaml
+│   ├── deployment.yaml              # App deployment with probes & resource limits
+│   ├── service.yaml                 # ClusterIP / LoadBalancer service
+│   ├── ingress.yaml                 # AWS ALB Ingress
+│   ├── configmap.yaml
+│   ├── hpa.yaml                     # Horizontal Pod Autoscaler
+│   └── ollama/
+│       ├── deployment.yaml          # Ollama AI service deployment
+│       └── service.yaml
 │
-├── 📂 assets/                 # Static Assets
-│   ├── images/                # Image files
-│   ├── icons/                 # Icon assets
-│   ├── fonts/                 # Custom fonts
-│   └── data/                  # JSON data files
+├── 📁 argocd/                       # Argo CD Application manifests
+│   └── application.yaml             # Argo CD App-of-Apps config
 │
-├── 📂 components/             # Reusable UI Components
-│   ├── header.html            # Header component
-│   ├── footer.html            # Footer component
-│   ├── card.html              # Card component
-│   └── modal.html             # Modal component
+├── 📁 monitoring/                   # Observability stack
+│   ├── prometheus/
+│   │   ├── values.yaml              # kube-prometheus-stack Helm values
+│   │   └── alerting-rules.yaml
+│   └── grafana/
+│       └── dashboards/
+│           ├── kubernetes-cluster.json
+│           └── banking-app.json
 │
-└── 📂 vercel/                 # Vercel Configuration
-    └── vercel.json            # Vercel deployment config
+├── 📁 .github/
+│   └── workflows/
+│       ├── ci.yml                   # CI: Build → Test → Push → Update manifest
+│       └── terraform-plan.yml       # Terraform plan on PR
+│
+├── docker-compose.yml               # Local development environment
+└── README.md
 ```
 
 ---
 
-## 🎨 Customization
+## ⚙️ CI/CD Pipeline
 
-### **Update Personal Information**
+The project implements a **fully automated GitOps delivery pipeline** with a clear separation of concerns between CI (GitHub Actions) and CD (Argo CD).
 
-Edit the main HTML file or data files to update:
+### Pipeline Overview
 
-```javascript
-// Update in assets/data/portfolio.json or directly in HTML
-const portfolioData = {
-  name: "Your Name",
-  title: "DevOps Engineer",
-  email: "your.email@example.com",
-  phone: "+1 (XXX) XXX-XXXX",
-  linkedin: "https://linkedin.com/in/yourprofile",
-  github: "https://github.com/yourprofile",
-  twitter: "https://twitter.com/yourprofile"
-};
+```mermaid
+sequenceDiagram
+    participant Dev as 👨‍💻 Developer
+    participant GH  as GitHub
+    participant CI  as GitHub Actions
+    participant Reg as Docker Registry
+    participant Repo as Manifest Repo
+    participant Argo as Argo CD
+    participant EKS as AWS EKS
+
+    Dev->>GH: git push / merge PR
+    GH->>CI: Trigger CI Workflow
+    CI->>CI: Run Unit Tests (Maven)
+    CI->>CI: Build Docker Image (tag: sha-XXXXXXX)
+    CI->>Reg: Push Image to Registry
+    CI->>Repo: Update image tag in deployment.yaml
+    Repo->>Argo: Drift detected (new commit)
+    Argo->>EKS: Sync — Rolling Deployment
+    EKS-->>Argo: Deployment Healthy ✅
+    Argo-->>Dev: Slack / Email notification
 ```
 
-### **Customize Colors**
 
-Edit `css/style.css` to change the color scheme:
 
-```css
-:root {
-  /* Primary Colors */
-  --primary-color: #0066cc;
-  --secondary-color: #00d4ff;
-  --accent-color: #ff6b6b;
-  
-  /* Text Colors */
-  --text-dark: #1a1a1a;
-  --text-light: #ffffff;
-  
-  /* Background Colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f5f5f5;
-  --bg-dark: #0a0e27;
-}
+
+## 📊 Monitoring & Observability
+
+The observability stack is built on the **kube-prometheus-stack**, providing full visibility into cluster health and application performance.
+
+### Metrics Collected
+
+| Category | Metrics |
+|---|---|
+| **Cluster** | Node CPU/Memory utilization, pod restarts, network I/O |
+| **Application** | JVM heap, HTTP request rate, response times, error rates |
+| **Kubernetes** | Deployment replica status, HPA scaling events |
+| **Ollama AI** | Model inference latency, request queue depth |
+
+### Grafana Dashboards
+
 ```
----
+📊 Kubernetes Cluster Overview
+   ├── Node resource utilization
+   ├── Namespace-level CPU/Memory breakdown
+   └── Pod status and restart counts
 
-## 🔧 Configuration
+📊 Banking Application Dashboard
+   ├── HTTP request throughput (req/s)
+   ├── P50 / P95 / P99 response latencies
+   ├── JVM metrics (heap, GC pause times)
+   └── Active sessions & error rate
 
-### **Environment Variables**
-
-Create a `.env` file in the root directory:
-
-```bash
-# API Configuration
-VITE_API_URL=https://api.example.com
-VITE_API_KEY=your_api_key_here
-
-# Analytics
-VITE_GA_ID=your_google_analytics_id
-
-# Contact Form
-VITE_FORM_ENDPOINT=https://formspree.io/f/your_form_id
+📊 AI Service Dashboard
+   ├── Ollama inference requests per minute
+   └── Model response latency distribution
 ```
 
-### **Vercel Configuration**
 
-The `vercel.json` file contains deployment settings:
+## 📚 Key Learnings
 
-```json
-{
-  "buildCommand": "npm run build",
-  "devCommand": "npm start",
-  "installCommand": "npm install",
-  "framework": "create-react-app"
-}
-```
+Working through this project end-to-end produced deep, hands-on understanding of:
 
----
+- **GitOps Mental Model** — Treating Git as the single source of truth for infrastructure and application state enforces discipline, auditability, and rollback simplicity. Argo CD's drift detection is a game-changer for operational stability.
 
-## 📚 Documentation
+- **Kubernetes at Depth** — Moving beyond basic deployments to configure liveness/readiness probes, HPAs, resource requests/limits, and namespace RBAC revealed how much operational safety Kubernetes can provide when configured correctly.
 
-### **Getting Help**
+- **Terraform State Management** — Managing remote state with S3 + DynamoDB locking taught the criticality of state isolation, especially when collaborating or managing multiple environments.
 
-- 📖 **HTML Reference**: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/HTML)
-- 🎨 **CSS Reference**: [MDN CSS Documentation](https://developer.mozilla.org/en-US/docs/Web/CSS)
-- 📝 **JavaScript Guide**: [JavaScript.info](https://javascript.info/)
-- ☁️ **Vercel Docs**: [Vercel Documentation](https://vercel.com/docs)
+- **CI/CD Separation of Concerns** — Keeping CI (code quality, image building) and CD (deployment) as separate concerns makes pipelines more reliable, auditable, and independently scalable.
 
-### **Best Practices**
+- **Observability-First Thinking** — Shipping without metrics is shipping blind. Building the Prometheus + Grafana stack early changed how I thought about deployments — visibility before velocity.
 
-#### **Code Quality**
-- ✅ Use semantic HTML5 elements
-- ✅ Follow CSS naming conventions (BEM)
-- ✅ Write clean, commented JavaScript
-- ✅ Keep functions small and focused
-- ✅ Use consistent formatting
-
-#### **Performance**
-- ✅ Minimize CSS/JavaScript files
-- ✅ Optimize images (use WebP format)
-- ✅ Lazy-load heavy assets
-- ✅ Use CSS Grid for layouts
-- ✅ Implement efficient caching
-
-#### **Accessibility**
-- ✅ Use semantic HTML
-- ✅ Add ARIA labels where needed
-- ✅ Ensure keyboard navigation
-- ✅ Maintain proper color contrast
-- ✅ Test with screen readers
-
-#### **SEO Optimization**
-- ✅ Use descriptive meta tags
-- ✅ Create XML sitemap
-- ✅ Optimize for Core Web Vitals
-- ✅ Use structured data (Schema.org)
-- ✅ Implement Open Graph tags
-
----
-## 📄 License
-
-This project is licensed under the **MIT License** - see the LICENSE file for details.
-
-### **You are free to:**
-- ✅ Use this project for personal and commercial purposes
-- ✅ Modify and distribute the code
-- ✅ Use the project as a base for your own work
-
-### **Requirements:**
-- 📋 Include the original license and copyright notice
-- 📋 Provide a list of changes made
+- **IaC Discipline** — Zero manual cloud console interactions enforced a reproducible, version-controlled infrastructure that can be torn down and rebuilt in minutes.
 
 ---
 
-### **Resources**
-- 📚 [Frequently Asked Questions](./docs/FAQ.md)
-- 🐛 [Known Issues](https://github.com/Harsh7209/DevOps-Portfolio/issues?q=is%3Aissue+label%3A%22known+issue%22)
-- 📋 [Changelog](./CHANGELOG.md)
-- 🗺️ [Roadmap](./ROADMAP.md)
+## 🔭 Future Improvements
+
+- [ ] **Multi-environment GitOps** — Separate `dev` / `staging` / `prod` Argo CD ApplicationSets with promotion gates
+- [ ] **Helm Chart Migration** — Convert raw K8s manifests to parameterized Helm charts for environment-specific overrides
+- [ ] **Secrets Management** — Integrate AWS Secrets Manager or HashiCorp Vault via External Secrets Operator (ESO)
+- [ ] **Service Mesh** — Add Istio or Linkerd for mTLS, advanced traffic shaping, and distributed tracing
+- [ ] **Canary Deployments** — Implement progressive delivery using Argo Rollouts
+- [ ] **SLO Alerting** — Define SLIs/SLOs and wire multi-window, multi-burn-rate alerts in Prometheus
+- [ ] **Terraform Modules** — Refactor infrastructure into reusable, versioned modules published to Terraform Registry
+- [ ] **Cost Optimization** — Integrate AWS Spot instances and Karpenter for node autoprovisioning
+- [ ] **DORA Metrics** — Instrument deployment frequency, lead time, MTTR, and change failure rate
 
 ---
 
-### ⭐ If this project helped you, please star it! ⭐
+## 🤝 Attribution
+
+The base banking application logic and Spring Boot codebase were adapted from an existing open-source project. All **DevOps, cloud infrastructure, CI/CD, GitOps, and observability implementation** — including Dockerization, Terraform, EKS provisioning, GitHub Actions pipelines, Argo CD configuration, and the full monitoring stack — were **designed, built, and documented independently** as part of this portfolio project.
+
+---
+
+## 👤 Author
+
+<div align="center">
+
+**Harsh Choubey**
+
+
+
+
+*Open to DevOps, Platform Engineering, and Cloud Infrastructure roles.*
 
 </div>
 
 ---
 
-## 📈 Project Statistics
 
-<div align="center">
-
-![GitHub stars](https://img.shields.io/github/stars/Harsh7209/DevOps-Portfolio?style=social)
-![GitHub forks](https://img.shields.io/github/forks/Harsh7209/DevOps-Portfolio?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/Harsh7209/DevOps-Portfolio?style=social)
-
-![Last commit](https://img.shields.io/github/last-commit/Harsh7209/DevOps-Portfolio?style=flat-square)
-![Repository size](https://img.shields.io/github/repo-size/Harsh7209/DevOps-Portfolio?style=flat-square)
-![Open issues](https://img.shields.io/github/issues/Harsh7209/DevOps-Portfolio?style=flat-square)
-
-</div>
-
----
-
-## 👨‍💻 Author
-
-<div align="center">
-
-### **Harsh**
-
-**DevOps Engineer | Cloud Specialist | Open Source Enthusiast**
-
-[GitHub](https://github.com/Harsh7209) • [LinkedIn](https://linkedin.com/in/yourprofile) • [Email](mailto:your.email@example.com)
-
-</div>
-
----
-
-## 🙏 Acknowledgments
-
-- 🎨 Inspired by modern design trends
-- 🚀 Built with web development best practices
-- ♿ Accessibility guidelines from WAI-ARIA
-- 📚 Community feedback and suggestions
-- 🤝 All contributors and supporters
 
 ---
 
 <div align="center">
 
-### 🚀 Ready to showcase your DevOps expertise? 
+**⭐ If this project helped you learn or served as inspiration, please consider starring the repo!**
 
-**[Deploy Your Portfolio Today](https://portfolio-beryl-three-78.vercel.app)**
-
----
-
-**Made with ❤️ by [Harsh](https://github.com/Harsh7209)**
-
-*Last Updated: 2026 | MIT License | All Rights Reserved ©*
+*Built with precision. Deployed with confidence. Monitored with clarity.*
 
 </div>
